@@ -11,7 +11,6 @@ const SearchBar = ({ searchLocation }) => {
         id="search-text"
         placeholder="Search location"
         onChange={(e) => {
-            console.log('e target val: ', e.target.value)
             setSearchText(e.target.value)
         }}
         onKeyDown={(e) => e.key === "Enter" && searchLocation(searchText)}

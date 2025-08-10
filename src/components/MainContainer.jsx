@@ -12,6 +12,7 @@ const MainContainer = () => {
   const [apiKey, setApiKey] = useState("13438855c6704a9f8c170846250908");
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [errorDetails, setErrorDetails] = useState("");
 
   const fetchForecastWeather = async (locationSearch = "manila", days = 4) => {
     try {
@@ -19,6 +20,14 @@ const MainContainer = () => {
       const response = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${locationSearch}&days=${days}`
       );
+
+      if (!response.ok) {
+        const errorText = await response.text(); // Get error details if available
+
+        throw new Error(
+          `HTTP error! Status: ${response.status} - ${errorText}`
+        );
+      }
 
       const { location, current, forecast } = await response.json();
 
@@ -29,7 +38,8 @@ const MainContainer = () => {
       setIsLoading(false);
     } catch (error) {
       console.error("Error on fetching weather data: ", error);
-      setIsError(true)
+      setIsError(true);
+      setErrorDetails(error);
     }
   };
 
@@ -50,7 +60,10 @@ const MainContainer = () => {
       <div className="hero-banner" style={{ width: "100%" }}>
         <div className="weather-block">
           {isError ? (
-            <h1 className="error-display">Request Error!</h1>
+            <>
+              <h1 className="error-display">Request Error!</h1>
+              <p className="error-display">{errorDetails.toString()}</p>
+            </>
           ) : (
             <div className="loader-ring" role="status" aria-live="polite">
               <span className="visually-hidden">Loading…</span>

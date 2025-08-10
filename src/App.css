@@ -34,8 +34,8 @@
 }
 
 .hero-banner {
-  display: relative;
   min-height: 100vh;
+  min-width: 800px;
   background-image: url("./assets/hero-banner.avif");
   display: flex;
   justify-content: center;
@@ -52,6 +52,18 @@
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 800px) {
+  .hero-banner {
+    min-height: 215vh;
+  }
+
+  .hero-banner .weather-block {
+    display: block;
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 .color-primary {
@@ -151,6 +163,10 @@
   width: 1.2em;
 }
 
+.search-content {
+  width: 70%;
+}
+
 .font-bold {
   font-weight: bold;
 }
@@ -214,7 +230,7 @@
 }
 
 .mt-half {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .mt-1 {
@@ -223,6 +239,10 @@
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.ta-left {
+  text-align: left;
 }
 
 .error-display {
