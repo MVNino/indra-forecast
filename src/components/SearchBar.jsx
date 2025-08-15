@@ -13,9 +13,9 @@ const SearchBar = ({ searchLocation }) => {
         onChange={(e) => {
             setSearchText(e.target.value)
         }}
-        onKeyDown={(e) => e.key === "Enter" && searchLocation(searchText)}
+        onKeyDown={(e) => e.key === "Enter" && searchText && searchLocation(searchText)}
       />
-      <button type="button" className="color-primary" onClick={() => searchLocation(searchText)}>
+      <button type="button" className="color-primary" onClick={() => searchText && searchLocation(searchText)}>
         Search
       </button>
     </div>
