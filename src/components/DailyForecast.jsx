@@ -6,8 +6,8 @@ const DailyForecast = ({ forecastData }) => {
 
   return (
     <div className="daily-forecast">
-      {forecastData.forecastday.map((forecast, index) => (
-        <div className="mini-box" key={index}>
+      {forecastday.map((forecast, index) => (
+        <div className="mini-box" style={{ width: forecastday.length === 4 ? "23%" : "30%" }} key={index}>
           <h2 className="color-primary mb-1">{convertToDayInWeek(forecast.date)}</h2>
           <div className="weather-icon">
             <p

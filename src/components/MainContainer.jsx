@@ -9,6 +9,7 @@ const MainContainer = () => {
   const [locationData, setLocationData] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
 
+  // eslint-disable-next-line no-unused-vars
   const [apiKey, setApiKey] = useState("13438855c6704a9f8c170846250908");
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
